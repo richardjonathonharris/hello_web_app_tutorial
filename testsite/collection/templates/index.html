@@ -1,11 +1,16 @@
-{% load staticfiles %}
-<!doctype html>
-<html>
-<head>
-	<title>This is a generic title</title>
-</head>
-<body>
-	<h1>Hello world!</h1>
-	<p>This is a basic website</p>
-</body>	
-</html>	
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}
+	Homepage -- {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+	<h1> Hello world!</h1>
+	<p>Here are things you may like</p>
+	<p>{% if number %} the number is {{ number }}{% else %}No number!{% endif %}</p>
+	<p>There are {{ number }} dog{{ number|pluralize }} and that is lovely!</p>
+	<p>There are {{ number }} walrus{{ number|pluralize:"es" }} and that is terrible! :(</p>
+	<p>I love the number {{ number|apnumber }}</p>
+	<br/>
+	<p>{{ thing }}, {{ thing|slugify }}, {{ thing|title }}, {{ thing|truncatewords:1 }}
+{% endblock content %}
